@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amudham — Full-Cycle Permaculture Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{
+    --soil:#1B1E14; --soil-2:#242817; --paper:#EDE6D0;
+    --leaf:#7A9B5E; --rust:#BE7A3D; --water:#5B96A0; --line:#3d4128;
+    --font-display:'Fraunces',serif; --font-mono:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--soil); color:var(--paper); font-family:var(--font-mono); -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1000px; margin:0 auto; padding:56px 24px 100px;}
+  h1{font-family:var(--font-display); font-weight:700; font-size:36px; letter-spacing:0.5px; text-align:center;}
+  .tag{font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--leaf); margin-top:10px; text-align:center;}
+  .theory-badge{display:block; text-align:center; margin-top:14px;}
+  .theory-badge span{font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--rust); background:rgba(190,122,61,0.15); padding:4px 12px; border-radius:2px;}
+  .source{font-size:10.5px; color:var(--paper); opacity:0.55; text-align:center; margin-top:18px; max-width:640px; margin-left:auto; margin-right:auto; line-height:1.6;}
+
+  .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:44px 0;}
+  .kpi{border:1px solid var(--line); background:var(--soil-2); padding:16px;}
+  .kpi .label{font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--leaf); opacity:0.8;}
+  .kpi .value{font-family:var(--font-display); font-weight:700; font-size:20px; margin-top:8px;}
+  .kpi .sub{font-size:10px; opacity:0.55; margin-top:4px;}
+
+  .panel{border:1px solid var(--line); background:var(--soil-2); padding:26px; margin-top:20px;}
+  .panel h2{font-family:var(--font-display); font-weight:600; font-size:18px; margin-bottom:14px;}
+  .panel p{font-size:12.5px; line-height:1.75; opacity:0.85; margin-bottom:8px;}
+  .chart-wrap{position:relative; width:100%; height:260px;}
+
+  .elem-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
+  .elem{border:1px solid var(--line); padding:10px 12px; font-size:11px;}
+  .elem .t{font-family:var(--font-display); font-weight:600; font-size:13px; color:var(--leaf);}
+
+  .schedule{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;}
+  .month{border:1px solid var(--line); padding:8px 10px; font-size:10px; text-align:center; flex:1; min-width:70px;}
+  .month .m{opacity:0.55; font-size:9px; text-transform:uppercase; letter-spacing:1px;}
+  .month .a{font-family:var(--font-display); font-weight:600; font-size:11px; margin-top:4px; color:var(--paper);}
+
+  .tiers{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:6px;}
+  .tier{border-left:3px solid var(--water); background:var(--soil-2); padding:14px 12px;}
+  .tier .amt{font-family:var(--font-display); font-weight:700; font-size:18px;}
+  .tier .d{font-size:10px; opacity:0.65; margin-top:4px; line-height:1.5;}
+
+  footer{margin-top:64px; padding-top:20px; border-top:1px solid var(--line); font-size:10.5px; opacity:0.5; text-align:center;}
+  @media (max-width:640px){ .kpis, .elem-grid, .tiers{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Amudham</h1>
+  <div class="tag">Homestead Hub — Methodology Showcase</div>
+  <div class="theory-badge"><span>Theoretical — designed as a teaching example, never built</span></div>
+  <div class="source">Kantadu, Tamil Nadu, India — a proposed ¼-acre build-out within a 25-acre site, designed by Brian Newhouse and Anna as the worked example for Permaville workshops: start to finish, planning through market projections.</div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Design Area</div><div class="value">¼ acre</div><div class="sub">30m × 30m, within 25 acres total</div></div>
+    <div class="kpi"><div class="label">6-Month Budget</div><div class="value">$14,500</div><div class="sub">materials + food + overhead</div></div>
+    <div class="kpi"><div class="label">Water Storage</div><div class="value">14,000 L</div><div class="sub">8.4 psi / 6m tower</div></div>
+    <div class="kpi"><div class="label">Crowdfund Tiers</div><div class="value">4</div><div class="sub">$5 to $500</div></div>
+  </div>
+
+  <div class="panel">
+    <h2>Why This One Matters</h2>
+    <p>Every other Homestead Hub project is a real build with real constraints and real compromises. Amudham is the opposite and just as valuable: a clean-slate design showing the complete Permaville methodology with nothing left implicit — physical elements, systems engineering, phased budget, staffing model, and a funding mechanism, all in one document.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Elements Designed</h2>
+    <div class="elem-grid">
+      <div class="elem"><div class="t">Domes</div>PVC geodesic frame, chicken wire + cob, cement skin</div>
+      <div class="elem"><div class="t">Toilets</div>4 dry-composting stalls, 2×2m, earthbag walls</div>
+      <div class="elem"><div class="t">Showers</div>Solar-heated, greywater drains to gravel ring</div>
+      <div class="elem"><div class="t">Water system</div>Well (30'/100'), gravel-sand-charcoal filter, 1L/min</div>
+      <div class="elem"><div class="t">Bio-char maker</div>200L wood/hr at 900°C</div>
+      <div class="elem"><div class="t">Kitchen</div>Rocket stove, cob oven, hay box, cold storage</div>
+      <div class="elem"><div class="t">Classroom/dorm</div>2-level, sleeps 20 (&lt;3m² per person)</div>
+      <div class="elem"><div class="t">Ponds</div>Gley-lined, 2:1 wall slope, garden-bed overflow</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Phase I &amp; II Budget</h2>
+    <div class="chart-wrap"><canvas id="budgetChart"></canvas></div>
+  </div>
+
+  <div class="panel">
+    <h2>Proposed 2015 Schedule</h2>
+    <div class="schedule">
+      <div class="month"><div class="m">Feb</div><div class="a">Volunteers</div></div>
+      <div class="month"><div class="m">Mar</div><div class="a">Volunteers</div></div>
+      <div class="month"><div class="m">Apr</div><div class="a">Volunteers</div></div>
+      <div class="month"><div class="m">May</div><div class="a">PDC / meditation</div></div>
+      <div class="month"><div class="m">Jun</div><div class="a">PDC / meditation</div></div>
+      <div class="month"><div class="m">Jul</div><div class="a">PDC / meditation</div></div>
+      <div class="month"><div class="m">Aug</div><div class="a">Internship</div></div>
+      <div class="month"><div class="m">Sep</div><div class="a">Internship</div></div>
+      <div class="month"><div class="m">Oct</div><div class="a">Internship</div></div>
+      <div class="month"><div class="m">Nov</div><div class="a">PDC / meditation</div></div>
+      <div class="month"><div class="m">Dec</div><div class="a">PDC / meditation</div></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Crowdfunding Tiers — the Capital-Sequencing Pillar</h2>
+    <p>This is the workshop capital-sequencing model in its original form: revenue-generating tiers designed to fund the build before it started.</p>
+    <div class="tiers">
+      <div class="tier"><div class="amt">$5</div><div class="d">Permaville II PDF</div></div>
+      <div class="tier"><div class="amt">$15</div><div class="d">Permaville II book</div></div>
+      <div class="tier"><div class="amt">$120</div><div class="d">1-month stay ($7/day min.)</div></div>
+      <div class="tier"><div class="amt">$500</div><div class="d">PDC course, May–Jul</div></div>
+    </div>
+  </div>
+
+  <footer>Homestead Hub — Amudham Phase I proposal, designed for Permaville workshop training. Never installed.</footer>
+</div>
+
+<script>
+  new Chart(document.getElementById('budgetChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Domes','Toilets','Water filters/bio-char','Showers','Kitchen','Greywater/wicking beds','Classroom/dorm/rainwater','Workshop','Phase II (compost/nursery/ponds/chickens/creatures)','Food (5 people × 180 days)','Admin/transport (6 mo.)'],
+      datasets: [{ data: [300,400,1500,300,1000,150,3000,500,1350,3600,2400], backgroundColor: '#7A9B5E', borderRadius: 3, barThickness: 14 }]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => '$' + c.parsed.x.toLocaleString() } } },
+      scales: {
+        x: { ticks: { callback: (v) => '$' + v.toLocaleString(), color: '#EDE6D0' }, grid: { color: '#3d4128' } },
+        y: { ticks: { color: '#EDE6D0', font: { size: 9.5 } }, grid: { display: false } }
+      }
+    }
+  });
+</script>
+</body>
+</html>
